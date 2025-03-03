@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume E-Commerce</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="images/logo.png" alt="Brand Logo" width="40"> Perfume Store
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="cart.html">🛒 Cart <span id="cart-count">0</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-light ms-3" id="dark-mode-toggle">🌙</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section text-center text-white">
+        <div class="container">
+            <h1>Luxury Perfumes & Attars</h1>
+            <p>Non-Alcoholic | Water-Based | Skin-Friendly | Long-Lasting</p>
+            <a href="#categories" class="btn btn-light mt-3">Shop Now</a>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <section id="search-section" class="container text-center py-3">
+        <input type="text" id="search-input" class="form-control w-50 mx-auto" placeholder="Search for perfumes...">
+    </section>
+    
+
+    <!-- Categories Section -->
+    <section id="categories" class="container text-center py-5">
+        <h2>Our Categories</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="images/perfume.jpg" alt="Perfume">
+                    <h4>Perfume</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="images/attar.jpg" alt="Attar">
+                    <h4>Attar</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-card">
+                    <img src="images/bakhoor.jpg" alt="Bakhoor">
+                    <h4>Bakhoor</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="container text-center py-5">
+        <h2>Featured Products</h2>
+        <div class="row" id="product-list">
+            <!-- Products will be inserted dynamically using JavaScript -->
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="container text-center py-5 bg-light">
+        <h2>What Our Customers Say</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>"Amazing fragrances! Lasts all day long!"</p>
+                    <footer class="blockquote-footer">John Doe</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>"Best Attars I have ever tried. Highly recommended!"</p>
+                    <footer class="blockquote-footer">Jane Smith</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote class="blockquote">
+                    <p>"Excellent customer service and great products."</p>
+                    <footer class="blockquote-footer">David Lee</footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section id="newsletter" class="container text-center py-5">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest updates, offers, and discounts!</p>
+        <div class="d-flex justify-content-center">
+            <input type="email" id="email-input" class="form-control w-50" placeholder="Enter your email">
+            <button id="subscribe-btn" class="btn btn-dark ms-2">Subscribe</button>
+        </div>
+        <p id="subscribe-message" class="mt-2"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-dark text-white text-center py-3">
+        <p>Contact Us: perfume@example.com | +123 456 7890</p>
+        <div class="social-links">
+            <a href="#"><img src="images/facebook-icon.png" alt="Facebook" width="30"></a>
+            <a href="#"><img src="images/instagram-icon.png" alt="Instagram" width="30"></a>
+            <a href="#"><img src="images/twitter-icon.png" alt="Twitter" width="30"></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Subscribe Button Click Event
+        document.getElementById("subscribe-btn").addEventListener("click", function () {
+            const emailInput = document.getElementById("email-input").value;
+            const message = document.getElementById("subscribe-message");
+
+            if (validateEmail(emailInput)) {
+                message.textContent = "✅ Successfully subscribed!";
+                message.style.color = "green";
+            } else {
+                message.textContent = "❌ Please enter a valid email address.";
+                message.style.color = "red";
+            }
+        });
+
+        // Email Validation Function
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+    </script>
+
+</body>
+</html>
