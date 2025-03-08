@@ -36,3 +36,31 @@ body {
 .card {
     margin: 15px;
 }
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode .card {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.dark-mode input, 
+.dark-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode .btn {
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+}
+
+.dark-mode .btn:hover {
+    background-color: #666;
+}
